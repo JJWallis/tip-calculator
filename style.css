@@ -7,6 +7,11 @@
 - Light grayish cyan: hsl(185, 41%, 84%)
 - Light grayish cyan: hsl(189, 41%, 97%)
 - White: hsl(0, 0%, 100%)
+
+TO DO: 
+
+Tab index through btns 
+Convert px values to rem 
 */
 
 *,
@@ -95,6 +100,24 @@ body {
 .btn:last-child {
   color: hsl(183, 100%, 15%);
   background-color: hsl(189, 41%, 97%);
+}
+
+.container-results {
+  padding: 20px;
+  background-color: hsl(183, 100%, 15%);
+  border-radius: 20px;
+}
+
+.heading {
+  margin: 10px 0;
+  line-height: 0;
+  font-size: 0.8em;
+  color: hsl(0, 0%, 100%);
+}
+
+.per-person {
+  color: hsl(184, 14%, 56%);
+  font-size: 0.8em;
 }
 
 /* ==========================
