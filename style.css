@@ -12,6 +12,7 @@ TO DO:
 
 Tab index through btns 
 Convert px values to rem 
+Remove id selector for reset btn 
 */
 
 *,
@@ -100,16 +101,25 @@ body {
 .btn:last-child {
   color: hsl(183, 100%, 15%);
   background-color: hsl(189, 41%, 97%);
+  font-weight: bold;
 }
 
 .container-results {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px 20px;
   background-color: hsl(183, 100%, 15%);
   border-radius: 20px;
 }
 
+.container-results-child {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
 .heading {
-  margin: 10px 0;
+  margin: 8px 0;
   line-height: 0;
   font-size: 0.8em;
   color: hsl(0, 0%, 100%);
@@ -120,6 +130,18 @@ body {
   font-size: 0.8em;
 }
 
+.counter {
+  color: hsl(172, 67%, 45%);
+  font-size: 1.7em;
+  font-weight: bold;
+}
+
+#btn-reset {
+  margin-top: auto;
+  background-color: #0c686d;
+  text-transform: uppercase;
+  padding: 0.5em;
+}
 /* ==========================
         ElEMENT STATE 
 =============================*/
@@ -127,6 +149,10 @@ body {
 .btn:hover {
   cursor: pointer;
   color: hsl(183, 100%, 15%);
+}
+
+#btn-reset:hover {
+  background-color: #9fe8df;
 }
 
 .input:focus {
@@ -145,6 +171,11 @@ body {
   border: 1px solid #80ada8;
 }
 
-.invalid {
+.error {
   border: 1px solid #b38578;
+}
+
+.selected {
+  background-color: #26c2ad;
+  color: #0c686d;
 }
