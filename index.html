@@ -6,59 +6,63 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <title>Frontend Mentor | Tip calculator app</title>
   <link href="style.css" rel="stylesheet" type="text/css">
+  <link href="normalise.css" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
   <script defer src="script.js" type="text/javascript"></script>
 </head>
 <body>
-  <img src="/images/logo.svg" alt="logo">
+  <img src="/images/logo.svg" alt="logo" class="logo">
   <div class="wrapper">
 
-    
-    <div class="container-calculate flex-child">
+
+    <div class="container-calculate flex-wrapper-child">
       <form action="/" class="form" id="calc-form">
         <div class="bill">
           <label for="input-bill" class="label">Bill</label>
-          <input type="number" value="0" id="input-bill" class="input">
-          <img src="/images/icon-dollar.svg" class="dollar-icon">
+          <input type="text" placeholder="0" id="input-bill" class="input">
+          <img src="/images/icon-dollar.svg" alt="dollar sign icon" class="dollar-icon">
         </div>
         
-        <div class="tip">
+        <div class="tip-selection"> 
           <label for="btn-1st" class="label">Select Tip %</label>
-          <div class="tip-selection">
-            <button id="btn-1st" class="btn">5%</button>
-            <button id="btn-1st" class="btn">10%</button>
-            <button id="btn-1st" class="btn">15%</button>
-            <button id="btn-1st" class="btn">25%</button>
-            <button id="btn-1st" class="btn">50%</button>
-            <button id="btn-1st" class="btn">Custom</button>
+          <div class="tip-btns-container">
+            <button class="btn">5%</button>
+            <button class="btn">10%</button>
+            <button class="btn">15%</button>
+            <button class="btn">25%</button>
+            <button class="btn">50%</button>
+            <button class="btn">Custom</button>
           </div>
         </div>
 
         <div class="num-ppl">
           <label for="input-ppl" class="label">Number of People</label>
-          <input type="number" value="0" id="input-ppl" class="input">
+          <input type="text" placeholder="0" id="input-ppl" class="input">
           <img src="/images/icon-person.svg" class="person-icon">
         </div>
       </form>
     </div>
 
 
-    <div class="container-results flex-child">
-      <div class="results-flex-child">
-        <div class="tip-amount-txt-container">
+    <div class="container-results flex-wrapper-child">
+      <div class="container-results-child">
+        <div class="tip-amount-container">
           <h4 class="heading">Tip Amount</h4>
           <span class="per-person">/ person</span>
         </div>
         <div class="counter">$0.00</div>
       </div>
 
-      <div class="results-flex-child">
-        <div class="tip-total-txt-container">
+      <div class="container-results-child">
+        <div class="tip-total-container">
           <h4 class="heading">Total</h4>
           <span class="per-person">/ person</span>
         </div>
         <div class="counter">$0.00</div>
       </div>
-      <button id='btn-reset' class="btn">Reset</button>
+      <button type="reset" id='btn-reset' class="btn" form="calc-form">Reset</button>
     </div>
 
 

@@ -1,14 +1,5 @@
 /* 
-Mobile: 375px
-Desktop: 1440px  
-
-Colors
-
-### Primary
-
 - Strong cyan: hsl(172, 67%, 45%)
-
-### Neutral
 
 - Very dark cyan: hsl(183, 100%, 15%)
 - Dark grayish cyan: hsl(186, 14%, 43%)
@@ -16,15 +7,121 @@ Colors
 - Light grayish cyan: hsl(185, 41%, 84%)
 - Light grayish cyan: hsl(189, 41%, 97%)
 - White: hsl(0, 0%, 100%)
-
-## Typography
-
-### Body Copy
-
-- Font size (form inputs): 24px
-
-### Font
-
-- Family: [Space Mono](https://fonts.google.com/specimen/Space+Mono)
-- Weights: 400, 500, 700
 */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font: 1em/1.5 "Space Mono", monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: hsl(185, 41%, 84%);
+}
+
+.logo {
+  margin-top: 40px;
+}
+
+.wrapper {
+  width: 80%;
+  max-width: 460px;
+  padding: 30px;
+  margin: 30px 0;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 20px;
+}
+
+.label {
+  display: block;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: hsl(186, 14%, 43%);
+}
+
+.input {
+  margin-top: 8px;
+  padding: 0.4em 0.4em 0.4em 0.7em;
+  border: none;
+  border-radius: 5px;
+  color: hsl(183, 100%, 15%);
+  background-color: hsl(189, 41%, 97%);
+  font-weight: bold;
+  width: 100%;
+}
+
+.bill,
+.num-ppl {
+  position: relative;
+}
+
+.bill,
+.num-ppl,
+.tip-selection {
+  margin-bottom: 30px;
+}
+
+.dollar-icon,
+.person-icon {
+  position: absolute;
+  right: 10px;
+  bottom: 16%;
+}
+
+.tip-selection label {
+  margin-bottom: 10px;
+}
+
+.tip-btns-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 40px 40px 40px;
+  grid-gap: 13px;
+}
+
+.btn {
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(183, 100%, 15%);
+  font-size: 1.1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn:last-child {
+  color: hsl(183, 100%, 15%);
+  background-color: hsl(189, 41%, 97%);
+}
+
+/* ==========================
+        ElEMENT STATE 
+=============================*/
+.input,
+.btn:hover {
+  cursor: pointer;
+  color: hsl(183, 100%, 15%);
+}
+
+.input:focus {
+  outline: none;
+  border: 2px solid #80ada8;
+}
+
+.btn:hover {
+  background-color: #9fe8df;
+}
+
+/* ==========================
+        JS CLASSES
+=============================*/
+.custom-btn {
+  border: 1px solid #80ada8;
+}
+
+.invalid {
+  border: 1px solid #b38578;
+}
