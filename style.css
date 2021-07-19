@@ -98,10 +98,15 @@ body {
   border-radius: 5px;
 }
 
-.btn:last-child {
-  color: hsl(183, 100%, 15%);
-  background-color: hsl(189, 41%, 97%);
+.tip-btns-container input {
+  margin-top: 0;
+}
+
+#input-tip::placeholder {
+  text-align: center;
+  font-size: 1.1em;
   font-weight: bold;
+  color: hsl(183, 100%, 15%);
 }
 
 .container-results {
@@ -139,6 +144,7 @@ body {
 #btn-reset {
   margin-top: auto;
   background-color: #0c686d;
+  color: hsl(183, 100%, 15%);
   text-transform: uppercase;
   padding: 0.5em;
 }
