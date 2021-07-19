@@ -9,26 +9,59 @@
   <script defer src="script.js" type="text/javascript"></script>
 </head>
 <body>
+  <img src="/images/logo.svg" alt="logo">
+  <div class="wrapper">
 
-  Bill
+    
+    <div class="container-calculate flex-child">
+      <form action="/" class="form" id="calc-form">
+        <div class="bill">
+          <label for="input-bill" class="label">Bill</label>
+          <input type="number" value="0" id="input-bill" class="input">
+          <img src="/images/icon-dollar.svg" class="dollar-icon">
+        </div>
+        
+        <div class="tip">
+          <label for="btn-1st" class="label">Select Tip %</label>
+          <div class="tip-selection">
+            <button id="btn-1st" class="btn">5%</button>
+            <button id="btn-1st" class="btn">10%</button>
+            <button id="btn-1st" class="btn">15%</button>
+            <button id="btn-1st" class="btn">25%</button>
+            <button id="btn-1st" class="btn">50%</button>
+            <button id="btn-1st" class="btn">Custom</button>
+          </div>
+        </div>
 
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
+        <div class="num-ppl">
+          <label for="input-ppl" class="label">Number of People</label>
+          <input type="number" value="0" id="input-ppl" class="input">
+          <img src="/images/icon-person.svg" class="person-icon">
+        </div>
+      </form>
+    </div>
 
-  Number of People
 
-  Tip Amount
-  / person
+    <div class="container-results flex-child">
+      <div class="results-flex-child">
+        <div class="tip-amount-txt-container">
+          <h4 class="heading">Tip Amount</h4>
+          <span class="per-person">/ person</span>
+        </div>
+        <div class="counter">$0.00</div>
+      </div>
 
-  Total
-  / person
+      <div class="results-flex-child">
+        <div class="tip-total-txt-container">
+          <h4 class="heading">Total</h4>
+          <span class="per-person">/ person</span>
+        </div>
+        <div class="counter">$0.00</div>
+      </div>
+      <button id='btn-reset' class="btn">Reset</button>
+    </div>
 
-  Reset
-  
+
+  </div>  
 </body>
 </html>
