@@ -1,22 +1,27 @@
-// Custom input in disabled state if tip-btn in a selected state + vice-versa (visually showcase via disabled class + ternary operator) 
-// No error mssg to display if btn selected (on custom input) 
-// Better method of extrapolating % 
 // Refactor 
 
 const form = document.querySelector('#calc-form')
 const btnsContainer = document.querySelector('#btns-container')
 const billInput = document.querySelector('#input-bill')
 const tipInput = document.querySelector('#input-tip')
+const tipInputParent = tipInput.parentElement.previousElementSibling
 const pplInput = document.querySelector('#input-ppl')
 const tipTotal = document.querySelector('#tip-total')
 const total = document.querySelector('#total')
 const btnReset = document.querySelector('#btn-reset')
+const btns = document.querySelectorAll('.tip-btn')
 const values = {}
 
 function inputValidate (x) {
     const num = +x.value 
     const classes = x.classList 
-    const label = x.matches('#input-tip') ? x.parentElement.previousElementSibling : x.previousElementSibling  
+    const label = x.matches('#input-tip') ? tipInputParent : x.previousElementSibling 
+
+    if (!x.value) {
+        classes.remove('error')
+        label.children[0].remove()
+        return 
+    }
 
     if (Number.isNaN(num) || num === 0) { 
         if (label.children.length === 0) {
@@ -64,17 +69,28 @@ btnsContainer.addEventListener('click', e => {
     const target = e.target
     if (target.matches('button')) {
         e.preventDefault()
-        const num = btnValidate(target.innerText)
-        const btns = document.querySelectorAll('.tip-btn') // Refactor in global scope as in next event listener too? 
-        btns.forEach(el => el.classList.remove('selected')) // or sep func 
-        target.classList.toggle('selected')
+        const num = btnValidate(target.innerText) 
+        if (target.classList.contains('selected')) {
+            target.classList.remove('selected')
+            tipInput.removeAttribute('disabled', 'disabled')
+            tipInput.classList.remove('disabled')
+        } else {
+            btns.forEach(el => el.classList.remove('selected'))
+            target.classList.add('selected')
+            tipInput.setAttribute('disabled', 'disabled')
+            tipInput.classList.add('disabled')
+            if (tipInputParent.children.length > 0) {
+                tipInputParent.children[0].remove()
+                tipInput.classList.remove('error')
+                tipInput.innerText = ''
+            }
+        }
         values['input-tip'] = num
         calculate()
     }
 })
 
 btnReset.addEventListener('click', e => {
-    const btns = document.querySelectorAll('.tip-btn')
     btns.forEach(el => el.classList.remove('selected'))
     btnReset.classList.remove('selected')
 })
