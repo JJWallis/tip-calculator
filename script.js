@@ -1,7 +1,3 @@
-// emoveErrorMsgFunc - takes label + its collection of els as params
-// runs classList(x, 'remove', 'error') as well - toggles or check if present before 
-// could reset corresponding input text to empty string on error 
-
 const form = document.querySelector('#calc-form')
 const btnsContainer = document.querySelector('#btns-container')
 const billInput = document.querySelector('#input-bill')
@@ -21,18 +17,12 @@ const tipBtnsLoop = () => btns.forEach(el => classList(el, 'remove', 'selected')
 function inputValidate (x) {
     const num = +x.value 
     const label = x.matches('#input-tip') ? tipInputParent : x.previousElementSibling 
-    const children = label.children
-    const childrenLength = children.length
-    const removeErrorMsg = () => children[0].remove()
-
     if (!x.value) { 
-        if (classList(x, 'contains', 'error')) classList(x, 'remove', 'error')
-        if (children.length > 0) removeErrorMsg()
+        removeErrorMsg(x, label)
         return 
     }
-
     if (Number.isNaN(num) || num === 0) { 
-        if (childrenLength === 0) {
+        if (label.children.length === 0) {
             const errorMsg = document.createElement('p')
             element(errorMsg, 'innerText', 'Please enter a valid number above zero')
             errorMsg.classList.add('error-msg')
@@ -40,8 +30,7 @@ function inputValidate (x) {
             classList(x, 'add', 'error')
         }
     } else {
-        if (classList(x, 'contains', 'error')) classList(x, 'remove', 'error')
-        if (childrenLength > 0) removeErrorMsg() 
+        removeErrorMsg(x, label) 
         values[x.id] = num 
         calculate()
     }
@@ -52,6 +41,12 @@ function btnValidate (x) {
     arr.pop()
     const num = arr.join('')
     return +num
+}
+
+function removeErrorMsg (el, label) {
+    const children = label.children
+    if (classList(el, 'contains', 'error')) classList(el, 'remove', 'error')
+    if (children.length > 0) children[0].remove()
 }
 
 function calculate () {
