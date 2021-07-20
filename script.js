@@ -1,22 +1,22 @@
-const form = document.querySelector('#calc-form')
-const btnsContainer = document.querySelector('#btns-container')
-const billInput = document.querySelector('#input-bill')
-const tipInput = document.querySelector('#input-tip')
-const tipInputParent = tipInput.parentElement.previousElementSibling
-const pplInput = document.querySelector('#input-ppl')
-const tipTotal = document.querySelector('#tip-total')
-const total = document.querySelector('#total')
-const btnReset = document.querySelector('#btn-reset')
-const btns = document.querySelectorAll('.tip-btn')
-const values = {}
-
+const selection = el => document.querySelector(el)
 const element = (el, prop, val) => el[prop] = val
 const classList = (el, prop, val) => el.classList[prop](val)
 const tipBtnsLoop = () => btns.forEach(el => classList(el, 'remove', 'selected'))
+const form = selection('#calc-form')
+const btnsContainer = selection('#btns-container')
+const billInput = selection('#input-bill')
+const tipInput = selection('#input-tip')
+const tipInputParentLabel = tipInput.parentElement.previousElementSibling
+const pplInput = selection('#input-ppl')
+const tipTotal = selection('#tip-total')
+const total = selection('#total')
+const btnReset = selection('#btn-reset')
+const btns = document.querySelectorAll('.tip-btn')
+const values = {}
 
 function inputValidate (x) {
     const num = +x.value 
-    const label = x.matches('#input-tip') ? tipInputParent : x.previousElementSibling 
+    const label = x.matches('#input-tip') ? tipInputParentLabel : x.previousElementSibling 
     if (!x.value) { 
         removeErrorMsg(x, label)
         return 
@@ -69,7 +69,7 @@ form.addEventListener('change', e => {
 
 btnsContainer.addEventListener('click', e => {
     const target = e.target
-    if (target.matches('button')) { // obj to store all 4 funcs + run based on prop name? 
+    if (target.matches('button')) { 
         e.preventDefault()
         const num = btnValidate(target.innerText) 
         const disabled = prop => tipInput[prop]('disabled', 'disabled') 
@@ -82,11 +82,7 @@ btnsContainer.addEventListener('click', e => {
             classList(target, 'add', 'selected')
             disabled('setAttribute')
             classList(tipInput, 'add', 'disabled')
-            if (tipInputParent.children.length > 0) {
-                tipInputParent.children[0].remove()
-                tipInput.classList.remove('error')
-                tipInput.innerText = ''
-            }
+            removeErrorMsg(tipInput, tipInputParentLabel)
         }
         values['input-tip'] = num
         calculate()
