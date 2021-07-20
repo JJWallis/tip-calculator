@@ -27,12 +27,12 @@
         
         <div class="tip-selection"> 
           <label class="label">Select Tip %</label>
-          <div class="tip-btns-container">
-            <button class="btn">5%</button>
-            <button class="btn">10%</button>
-            <button class="btn">15%</button>
-            <button class="btn">25%</button>
-            <button class="btn">50%</button>
+          <div class="tip-btns-container" id="btns-container">
+            <button class="btn tip-btn">5%</button>
+            <button class="btn tip-btn">10%</button>
+            <button class="btn tip-btn">15%</button>
+            <button class="btn tip-btn">25%</button>
+            <button class="btn tip-btn">50%</button>
             <input type="text" placeholder="Custom" id="input-tip" class="input">
           </div>
         </div>
@@ -62,7 +62,7 @@
         </div>
         <div class="counter" id="total">$0.00</div>
       </div>
-      <button type="reset" id='btn-reset' class="btn" form="calc-form">Reset</button>
+      <button type="reset" id='btn-reset' class="btn reset-btn" form="calc-form">Reset</button>
     </div>
 
 

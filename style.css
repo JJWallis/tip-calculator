@@ -141,7 +141,7 @@ body {
   font-weight: bold;
 }
 
-#btn-reset {
+.reset-btn {
   margin-top: auto;
   background-color: #0c686d;
   color: hsl(183, 100%, 15%);
@@ -189,4 +189,7 @@ body {
 .selected {
   background-color: #26c2ad;
   color: #0c686d;
+}
+
+.disabled {
 }
