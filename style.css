@@ -173,12 +173,17 @@ body {
 /* ==========================
         JS CLASSES
 =============================*/
-.custom-btn {
+/* .custom-btn {
   border: 1px solid #80ada8;
-}
+} */
 
 .error {
   border: 1px solid #b38578;
+}
+
+.error-msg {
+  color: #b38578;
+  font-size: 0.8em;
 }
 
 .selected {
