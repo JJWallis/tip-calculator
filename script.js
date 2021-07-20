@@ -4,11 +4,6 @@
 // Assigns value to input-tip property in obj (either creating or re-assigning)
 // Runs math func that checks whether Obj.keys(objName).length === 3 or any values !== 0 
 
-// Math formulas - using obj prop names: 
-// tipPerPerson = bill / peopleNum * 0.10 (10% - 10/100) = 2.4 | updates tip-total el 
-// totalPerPerson = bill / peopleNum + tipPerPerson | updates total el 
-
-
 const form = document.querySelector('#calc-form')
 const billInput = document.querySelector('#input-bill')
 const tipInput = document.querySelector('#input-tip')
@@ -42,7 +37,11 @@ function validate (x) {
 function calculate () {
     const arr = Object.keys(values)
     if (arr.length === 3) {
-
+        const tipPerPerson = () => values['input-bill'] / values['input-ppl'] * (values['input-tip'] / 100)
+        const tip = tipPerPerson()
+        const totalPerPerson = () => values['input-bill'] / values['input-ppl'] + tip
+        tipTotal.innerText = tip
+        total.innerText = totalPerPerson()
     }
 }
 
