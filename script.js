@@ -19,7 +19,7 @@ function inputValidate (x) {
 
     if (!x.value) {
         classes.remove('error')
-        label.children[0].remove()
+        if (label.children[0]) label.children[0].remove()
         return 
     }
 
@@ -52,10 +52,9 @@ function calculate () {
         const tipPerPerson = () => values['input-bill'] / values['input-ppl'] * (values['input-tip'] / 100)
         const tip = tipPerPerson()
         const totalPerPerson = () => values['input-bill'] / values['input-ppl'] + tip
-        tipTotal.innerText = tip
-        total.innerText = totalPerPerson()
-        btnReset.classList.toggle('selected')
-
+        tipTotal.innerText = `$${tip}`
+        total.innerText = `$${totalPerPerson()}` 
+        btnReset.classList.add('selected')
     }
 }
 
