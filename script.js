@@ -13,17 +13,18 @@ const btns = document.querySelectorAll('.tip-btn')
 const values = {}
 
 const element = (el, prop, val) => el[prop] = val
+const classList = (el, prop, val) => el.classList[prop](val)
 
 function inputValidate (x) {
     const num = +x.value 
-    const classes = x.classList //dynamic func instead! 
     const label = x.matches('#input-tip') ? tipInputParent : x.previousElementSibling 
     const children = label.children
     const childrenLength = children.length
+    const removeErrorMsg = () => children[0].remove()
 
     if (!x.value) { 
-        classes.remove('error')
-        if (children[0]) children[0].remove()
+        classList(x, 'remove', 'error')
+        if (children[0]) removeErrorMsg()
         return 
     }
 
@@ -31,14 +32,13 @@ function inputValidate (x) {
         if (childrenLength === 0) {
             const errorMsg = document.createElement('p')
             element(errorMsg, 'innerText', 'Please enter a valid number above zero')
-            // errorMsg.innerText = 'Please enter a valid number above zero'
             errorMsg.classList.add('error-msg')
             label.append(errorMsg)
-            classes.add('error')
+            classList(x, 'add', 'error')
         }
     } else {
-        if (classes.contains('error')) classes.remove('error')
-        if (childrenLength > 0) children[0].remove() 
+        if (classList(x, 'contains', 'error')) classList(x, 'remove', 'error')
+        if (childrenLength > 0) removeErrorMsg() 
         values[x.id] = num 
         calculate()
     }
