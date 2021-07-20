@@ -12,28 +12,33 @@ const btnReset = document.querySelector('#btn-reset')
 const btns = document.querySelectorAll('.tip-btn')
 const values = {}
 
+const element = (el, prop, val) => el[prop] = val
+
 function inputValidate (x) {
     const num = +x.value 
-    const classes = x.classList 
+    const classes = x.classList //dynamic func instead! 
     const label = x.matches('#input-tip') ? tipInputParent : x.previousElementSibling 
+    const children = label.children
+    const childrenLength = children.length
 
-    if (!x.value) {
+    if (!x.value) { 
         classes.remove('error')
-        if (label.children[0]) label.children[0].remove()
+        if (children[0]) children[0].remove()
         return 
     }
 
     if (Number.isNaN(num) || num === 0) { 
-        if (label.children.length === 0) {
+        if (childrenLength === 0) {
             const errorMsg = document.createElement('p')
-            errorMsg.innerText = 'Please enter a valid number above zero'
+            element(errorMsg, 'innerText', 'Please enter a valid number above zero')
+            // errorMsg.innerText = 'Please enter a valid number above zero'
             errorMsg.classList.add('error-msg')
             label.append(errorMsg)
             classes.add('error')
         }
     } else {
         if (classes.contains('error')) classes.remove('error')
-        if (label.children.length > 0) label.children[0].remove() 
+        if (childrenLength > 0) children[0].remove() 
         values[x.id] = num 
         calculate()
     }
