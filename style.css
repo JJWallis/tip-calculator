@@ -26,6 +26,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
   background-color: hsl(185, 41%, 84%);
 }
 
@@ -34,6 +35,8 @@ body {
 }
 
 .wrapper {
+  display: flex;
+  flex-direction: column;
   width: 80%;
   max-width: 460px;
   padding: 30px;
@@ -120,6 +123,7 @@ body {
 .container-results-child {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -183,7 +187,7 @@ body {
 
 .error-msg {
   color: #b38578;
-  font-size: 0.8em;
+  font-size: 1em;
 }
 
 .selected {
@@ -193,4 +197,48 @@ body {
 
 .disabled {
   display: none;
+}
+
+/* ==========================
+        MEDIA QUERIES
+=============================*/
+
+@media (min-width: 1000px) {
+  body {
+    justify-content: center;
+  }
+
+  .logo {
+    margin-top: 0;
+    margin-bottom: 50px;
+  }
+
+  .wrapper {
+    flex-direction: row;
+    max-width: 800px;
+    justify-content: flex-start;
+    margin-bottom: 0;
+  }
+
+  .container-calculate,
+  .container-results {
+    flex: 1 50%;
+  }
+
+  .container-calculate {
+    margin-right: 40px;
+  }
+
+  .tip-btns-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 35px 35px;
+  }
+
+  .container-results-child {
+    margin-bottom: 30px;
+  }
+
+  .counter {
+    font-size: 2.5em;
+  }
 }

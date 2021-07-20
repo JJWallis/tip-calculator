@@ -92,4 +92,6 @@ btnsContainer.addEventListener('click', e => {
 btnReset.addEventListener('click', e => {
     btns.forEach(el => el.classList.remove('selected'))
     btnReset.classList.remove('selected')
+    tipTotal.innerText = '$0.00'
+    total.innerText = '$0.00'
 })
