@@ -1,3 +1,7 @@
+// emoveErrorMsgFunc - takes label + its collection of els as params
+// runs classList(x, 'remove', 'error') as well - toggles or check if present before 
+// could reset corresponding input text to empty string on error 
+
 const form = document.querySelector('#calc-form')
 const btnsContainer = document.querySelector('#btns-container')
 const billInput = document.querySelector('#input-bill')
@@ -22,8 +26,8 @@ function inputValidate (x) {
     const removeErrorMsg = () => children[0].remove()
 
     if (!x.value) { 
-        classList(x, 'remove', 'error')
-        if (children[0]) removeErrorMsg()
+        if (classList(x, 'contains', 'error')) classList(x, 'remove', 'error')
+        if (children.length > 0) removeErrorMsg()
         return 
     }
 
@@ -70,7 +74,7 @@ form.addEventListener('change', e => {
 
 btnsContainer.addEventListener('click', e => {
     const target = e.target
-    if (target.matches('button')) {
+    if (target.matches('button')) { // obj to store all 4 funcs + run based on prop name? 
         e.preventDefault()
         const num = btnValidate(target.innerText) 
         const disabled = prop => tipInput[prop]('disabled', 'disabled') 
