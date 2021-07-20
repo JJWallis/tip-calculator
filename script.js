@@ -1,5 +1,3 @@
-// Refactor 
-
 const form = document.querySelector('#calc-form')
 const btnsContainer = document.querySelector('#btns-container')
 const billInput = document.querySelector('#input-bill')
@@ -75,15 +73,16 @@ btnsContainer.addEventListener('click', e => {
     if (target.matches('button')) {
         e.preventDefault()
         const num = btnValidate(target.innerText) 
-        if (target.classList.contains('selected')) {
-            target.classList.remove('selected')
-            tipInput.removeAttribute('disabled', 'disabled')
-            tipInput.classList.remove('disabled')
+        const disabled = prop => tipInput[prop]('disabled', 'disabled') 
+        if (classList(target, 'contains', 'selected')) {
+            classList(target, 'remove', 'selected')
+            disabled('removeAttribute')
+            classList(tipInput, 'remove', 'disabled')
         } else {
             tipBtnsLoop()
-            target.classList.add('selected')
-            tipInput.setAttribute('disabled', 'disabled')
-            tipInput.classList.add('disabled')
+            classList(target, 'add', 'selected')
+            disabled('setAttribute')
+            classList(tipInput, 'add', 'disabled')
             if (tipInputParent.children.length > 0) {
                 tipInputParent.children[0].remove()
                 tipInput.classList.remove('error')
