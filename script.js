@@ -14,6 +14,7 @@ const values = {}
 
 const element = (el, prop, val) => el[prop] = val
 const classList = (el, prop, val) => el.classList[prop](val)
+const tipBtnsLoop = () => btns.forEach(el => classList(el, 'remove', 'selected'))
 
 function inputValidate (x) {
     const num = +x.value 
@@ -44,8 +45,8 @@ function inputValidate (x) {
     }
 }
 
-function btnValidate (val) { 
-    const arr = [...val]
+function btnValidate (x) { 
+    const arr = [...x]
     arr.pop()
     const num = arr.join('')
     return +num
@@ -57,9 +58,9 @@ function calculate () {
         const tipPerPerson = () => values['input-bill'] / values['input-ppl'] * (values['input-tip'] / 100)
         const tip = tipPerPerson()
         const totalPerPerson = () => values['input-bill'] / values['input-ppl'] + tip
-        tipTotal.innerText = `$${tip}`
-        total.innerText = `$${totalPerPerson()}` 
-        btnReset.classList.add('selected')
+        element(tipTotal,'innerText', `$${tip}`)
+        element(total, 'innerText', `$${totalPerPerson()}`)
+        classList(btnReset, 'add', 'selected')
     }
 }
 
@@ -79,7 +80,7 @@ btnsContainer.addEventListener('click', e => {
             tipInput.removeAttribute('disabled', 'disabled')
             tipInput.classList.remove('disabled')
         } else {
-            btns.forEach(el => el.classList.remove('selected'))
+            tipBtnsLoop()
             target.classList.add('selected')
             tipInput.setAttribute('disabled', 'disabled')
             tipInput.classList.add('disabled')
@@ -95,8 +96,8 @@ btnsContainer.addEventListener('click', e => {
 })
 
 btnReset.addEventListener('click', e => {
-    btns.forEach(el => el.classList.remove('selected'))
-    btnReset.classList.remove('selected')
-    tipTotal.innerText = '$0.00'
-    total.innerText = '$0.00'
+    tipBtnsLoop()
+    classList(btnReset, 'remove', 'selected')
+    element(tipTotal, 'innerText', '$0.00')
+    element(total, 'innerText', '$0.00')
 })
