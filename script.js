@@ -59,9 +59,14 @@ function btnStyles (el) {
 }
 
 function removeErrorMsg (el, label) {
-    const children = label.children
-    if (classList(el, 'contains', 'error')) classList(el, 'remove', 'error')
-    if (children.length > 0) children[0].remove()
+    if (el) {
+        const children = label.children
+        if (classList(el, 'contains', 'error')) classList(el, 'remove', 'error')
+        if (children.length > 0) children[0].remove()
+    } else {
+        const errorMsgs = document.querySelectorAll('.error-msg')
+        errorMsgs.forEach(el => el.remove())
+    }
 }
 
 function calculate () {
@@ -98,4 +103,5 @@ btnReset.addEventListener('click', e => {
     classList(btnReset, 'remove', 'selected')
     element(tipTotal, 'innerText', '$0.00')
     element(total, 'innerText', '$0.00')
+    removeErrorMsg()
 })
