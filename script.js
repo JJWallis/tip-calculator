@@ -65,7 +65,9 @@ function removeErrorMsg (el, label) {
         if (children.length > 0) children[0].remove()
     } else {
         const errorMsgs = document.querySelectorAll('.error-msg')
+        const errorClass = document.querySelectorAll('.error')
         errorMsgs.forEach(el => el.remove())
+        errorClass.forEach(el => classList(el, 'remove', 'error'))
     }
 }
 
