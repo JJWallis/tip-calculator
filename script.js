@@ -14,11 +14,11 @@ const btnReset = selection('#btn-reset')
 const btns = document.querySelectorAll('.tip-btn')
 const values = {}
 
-function inputValidate (x) {
-    const num = +x.value 
-    const label = x.matches('#input-tip') ? tipInputParentLabel : x.previousElementSibling 
-    if (!x.value) { 
-        removeErrorMsg(x, label)
+function inputValidate (el) {
+    const num = +el.value 
+    const label = el.matches('#input-tip') ? tipInputParentLabel : el.previousElementSibling 
+    if (!el.value) { 
+        removeErrorMsg(el, label)
         return 
     }
     if (Number.isNaN(num) || num === 0) { 
@@ -27,20 +27,35 @@ function inputValidate (x) {
             element(errorMsg, 'innerText', 'Please enter a valid number above zero')
             errorMsg.classList.add('error-msg')
             label.append(errorMsg)
-            classList(x, 'add', 'error')
+            classList(el, 'add', 'error')
         }
     } else {
-        removeErrorMsg(x, label) 
-        values[x.id] = num 
+        removeErrorMsg(el, label) 
+        values[el.id] = num 
         calculate()
     }
 }
 
-function btnValidate (x) { 
-    const arr = [...x]
+function btnValidate (el) { 
+    const arr = [...el]
     arr.pop()
     const num = arr.join('')
     return +num
+}
+
+function btnStyles (el) {
+    const disabled = prop => tipInput[prop]('disabled', 'disabled')
+    if (classList(el, 'contains', 'selected')) { 
+        classList(el, 'remove', 'selected')
+        disabled('removeAttribute')
+        classList(tipInput, 'remove', 'disabled')
+    } else {
+        tipBtnsLoop()
+        classList(el, 'add', 'selected')
+        disabled('setAttribute')
+        classList(tipInput, 'add', 'disabled')
+        removeErrorMsg(tipInput, tipInputParentLabel)
+    }
 }
 
 function removeErrorMsg (el, label) {
@@ -72,18 +87,7 @@ btnsContainer.addEventListener('click', e => {
     if (target.matches('button')) { 
         e.preventDefault()
         const num = btnValidate(target.innerText) 
-        const disabled = prop => tipInput[prop]('disabled', 'disabled') 
-        if (classList(target, 'contains', 'selected')) {
-            classList(target, 'remove', 'selected')
-            disabled('removeAttribute')
-            classList(tipInput, 'remove', 'disabled')
-        } else {
-            tipBtnsLoop()
-            classList(target, 'add', 'selected')
-            disabled('setAttribute')
-            classList(tipInput, 'add', 'disabled')
-            removeErrorMsg(tipInput, tipInputParentLabel)
-        }
+        btnStyles(target)
         values['input-tip'] = num
         calculate()
     }
