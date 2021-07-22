@@ -1,10 +1,11 @@
 /* 
-TO DO: 
-
-Tab index through btns 
-Convert px values to rem
-Styling radio btns - more complex
-Disabling range on num input 
+Appearance property - 'textfield' to overwrite default num range indicator + style 
+Step attr (transition effect for hover?) 
+Background img for icons in inputs - stays pinned at position (vs positioning) 
+Border hover - make things respond when active (not with outline - Kevin video)
+Diff cursor styles vs 'pointer' (text one) 
+Better to use fieldsets + legends vs div's with labels within form? 
+Space between alternative - position with offsets at 0 to pin with margins 
 */
 
 *,
@@ -53,11 +54,15 @@ body {
   color: hsl(183, 100%, 15%);
   background-color: hsl(189, 41%, 97%);
   font-weight: bold;
+  text-align: right;
 }
 
 .bill,
 .num-ppl {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .bill,
@@ -69,7 +74,7 @@ body {
 .dollar-icon,
 .person-icon {
   position: absolute;
-  right: 10px;
+  left: 10px;
   bottom: 16%;
 }
 
@@ -79,8 +84,8 @@ body {
 
 .tip-btns-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 40px 40px 40px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 40px);
   grid-gap: 13px;
 }
 
@@ -150,7 +155,6 @@ body {
 .input,
 .btn:hover {
   cursor: pointer;
-  color: hsl(183, 100%, 15%);
 }
 
 #btn-reset:hover {
@@ -162,8 +166,13 @@ body {
   border: 2px solid #80ada8;
 }
 
+.input:hover {
+  border: 2px solid #80ada8;
+}
+
 .btn:hover {
   background-color: #9fe8df;
+  color: hsl(183, 100%, 15%);
 }
 
 /* ==========================
@@ -180,6 +189,7 @@ body {
 .error-msg {
   color: #b38578;
   font-size: 1em;
+  margin: 0;
 }
 
 .selected {
@@ -222,8 +232,8 @@ body {
   }
 
   .tip-btns-container {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 40px 40px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 40px);
   }
 
   .container-results-child {
