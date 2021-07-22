@@ -12,7 +12,7 @@ const tipTotal = selection('#tip-total')
 const total = selection('#total')
 const btnReset = selection('#btn-reset')
 const btns = document.querySelectorAll('.tip-btn')
-const values = {}
+let values = {}
 
 function inputValidate (el) {
     const num = +el.value 
@@ -100,10 +100,11 @@ btnsContainer.addEventListener('click', e => {
     }
 })
 
-btnReset.addEventListener('click', e => {
+btnReset.addEventListener('click', () => {
     tipBtnsLoop()
     classList(btnReset, 'remove', 'selected')
     element(tipTotal, 'innerText', '$0.00')
     element(total, 'innerText', '$0.00')
     removeErrorMsg()
+    values = {}
 })

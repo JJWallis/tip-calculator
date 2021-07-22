@@ -6,6 +6,8 @@ Border hover - make things respond when active (not with outline - Kevin video)
 Diff cursor styles vs 'pointer' (text one) 
 Better to use fieldsets + legends vs div's with labels within form? 
 Space between alternative - position with offsets at 0 to pin with margins 
+Input event type vs :valid + :invalid pseudo classes (inconsistent cross browser - MDN) 
+setInvterval() + toFixed()
 */
 
 *,
