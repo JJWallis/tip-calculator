@@ -1,3 +1,5 @@
+// input event vs change 
+
 const selection = el => document.querySelector(el)
 const element = (el, prop, val) => el[prop] = val
 const classList = (el, prop, val) => el.classList[prop](val)
@@ -16,7 +18,13 @@ let values = {}
 
 function inputValidate (el) {
     const num = +el.value 
-    const label = el.matches('#input-tip') ? tipInputParentLabel : el.previousElementSibling 
+    let label = ''
+    if (el.matches('#input-tip')) {
+        label = tipInputParentLabel
+        tipBtnsLoop()
+    } else {
+        label = el.previousElementSibling
+    }
     if (!el.value) { 
         removeErrorMsg(el, label)
         return 
@@ -36,26 +44,10 @@ function inputValidate (el) {
     }
 }
 
-function btnValidate (el) { 
-    const arr = [...el]
-    arr.pop()
-    const num = arr.join('')
-    return +num
-}
-
 function btnStyles (el) {
-    const disabled = prop => tipInput[prop]('disabled', 'disabled')
-    if (classList(el, 'contains', 'selected')) { 
-        classList(el, 'remove', 'selected')
-        disabled('removeAttribute')
-        classList(tipInput, 'remove', 'disabled')
-    } else {
-        tipBtnsLoop()
-        classList(el, 'add', 'selected')
-        disabled('setAttribute')
-        classList(tipInput, 'add', 'disabled')
-        removeErrorMsg(tipInput, tipInputParentLabel)
-    }
+    tipBtnsLoop()
+    classList(el, 'add', 'selected')
+    removeErrorMsg(tipInput, tipInputParentLabel) 
 }
 
 function removeErrorMsg (el, label) {
@@ -93,9 +85,9 @@ btnsContainer.addEventListener('click', e => {
     const target = e.target
     if (target.matches('button')) { 
         e.preventDefault()
-        const num = btnValidate(target.innerText) 
+        const num = target.innerText.replace('%','')
         btnStyles(target)
-        values['input-tip'] = num
+        values['input-tip'] = +num
         calculate()
     }
 })

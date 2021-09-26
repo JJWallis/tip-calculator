@@ -1,25 +1,21 @@
-/* 
-Appearance property - 'textfield' to overwrite default num range indicator + style 
-Step attr (transition effect for hover?) 
-Background img for icons in inputs - stays pinned at position (vs positioning) 
-Border hover - make things respond when active (not with outline - Kevin video)
-Diff cursor styles vs 'pointer' (text one) 
-Better to use fieldsets + legends vs div's with labels within form? 
-Space between alternative - position with offsets at 0 to pin with margins 
-Input event type vs :valid + :invalid pseudo classes (inconsistent cross browser - MDN) 
-setInvterval() + toFixed()
-*/
-
 *,
 *::before,
 *::after {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 body {
   font: 1em/1.5 "Space Mono", monospace;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   min-height: 100vh;
   background-color: hsl(185, 41%, 84%);
@@ -30,7 +26,12 @@ body {
 }
 
 .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   width: 80%;
   max-width: 460px;
@@ -62,8 +63,15 @@ body {
 .bill,
 .num-ppl {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
@@ -85,10 +93,43 @@ body {
 }
 
 .tip-btns-container {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 13px 1fr;
   grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: 40px 13px 40px 13px 40px;
   grid-template-rows: repeat(3, 40px);
   grid-gap: 13px;
+}
+
+.tip-btns-container > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
+.tip-btns-container > *:nth-child(2) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+}
+
+.tip-btns-container > *:nth-child(3) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+}
+
+.tip-btns-container > *:nth-child(4) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+}
+
+.tip-btns-container > *:nth-child(5) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 1;
+}
+
+.tip-btns-container > *:nth-child(6) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 3;
 }
 
 .btn {
@@ -104,6 +145,34 @@ body {
   margin-top: 0;
 }
 
+#input-tip::-webkit-input-placeholder {
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: hsl(183, 100%, 15%);
+}
+
+#input-tip::-moz-placeholder {
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: hsl(183, 100%, 15%);
+}
+
+#input-tip:-ms-input-placeholder {
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: hsl(183, 100%, 15%);
+}
+
+#input-tip::-ms-input-placeholder {
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: hsl(183, 100%, 15%);
+}
+
 #input-tip::placeholder {
   text-align: center;
   font-size: 1.1em;
@@ -112,7 +181,12 @@ body {
 }
 
 .container-results {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   padding: 40px 20px 20px;
   background-color: hsl(183, 100%, 15%);
@@ -120,8 +194,14 @@ body {
 }
 
 .container-results-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   margin-bottom: 20px;
 }
@@ -170,11 +250,17 @@ body {
 
 .input:hover {
   border: 2px solid #80ada8;
+  -webkit-transition: 400ms;
+  -o-transition: 400ms;
+  transition: 400ms;
 }
 
 .btn:hover {
   background-color: #9fe8df;
   color: hsl(183, 100%, 15%);
+  -webkit-transition: 500ms;
+  -o-transition: 500ms;
+  transition: 500ms;
 }
 
 /* ==========================
@@ -209,6 +295,8 @@ body {
 
 @media (min-width: 1000px) {
   body {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
   }
 
@@ -218,14 +306,21 @@ body {
   }
 
   .wrapper {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
     max-width: 800px;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
     justify-content: flex-start;
     margin-bottom: 0;
   }
 
   .container-calculate,
   .container-results {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 50%;
     flex: 1 50%;
   }
 
@@ -234,8 +329,40 @@ body {
   }
 
   .tip-btns-container {
+    -ms-grid-columns: 1fr 13px 1fr 13px 1fr;
     grid-template-columns: repeat(3, 1fr);
+    -ms-grid-rows: 40px 13px 40px;
     grid-template-rows: repeat(2, 40px);
+  }
+
+  .tip-btns-container > *:nth-child(1) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+
+  .tip-btns-container > *:nth-child(2) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+
+  .tip-btns-container > *:nth-child(3) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+
+  .tip-btns-container > *:nth-child(4) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+  }
+
+  .tip-btns-container > *:nth-child(5) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 3;
+  }
+
+  .tip-btns-container > *:nth-child(6) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 5;
   }
 
   .container-results-child {
