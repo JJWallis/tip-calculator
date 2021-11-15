@@ -115,3 +115,5 @@ Building final number output format of str to match preset one in html (template
 Number.isNaN() vs isFinite()
 
 Input event vs change
+
+Testing, testing, testing
