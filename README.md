@@ -58,7 +58,7 @@ Your users should be able to:
 }
 ```
 
-The most challenging aspect of the project's design were the form inputs, particularly regarding the icons present within. My solution was to position those icons over the inputs, but I quickly ran into the problem of not being able to apply `position: relative` to the inputs, as well as the icons loosing their alignment when my border hover state was applied.
+The most challenging aspect of the project's design were the form inputs, particularly regarding the icons present within. My solution was to position those icons over the inputs, but I quickly ran into the problem of not being able to apply `position: relative;` to the inputs, as well as the icons loosing their alignment when my border hover state was applied.
 
 To solve this problem, I decided to try adding the icons as background images to the inputs which worked successfully. Not only did they stay centred when the inputs re-adjusted, but positioning them was much easier as well. I did however position the dynamic error messages in order to prevent my top-level wrapper from responding and becoming either too wide or tall.
 
@@ -70,7 +70,7 @@ Additionally, I learned about the `appearance` property in CSS which allows us t
 }
 ```
 
-Border on hover - if present before but colour alpha 0 - don't get other content responding on hover | when btn selected - colour fill stays post click (to show active amount)
+As explained above, I toggled a border on each input when hovered over to keep in line with the original design. However, when I first implemented this feature it caused all the content around the input to respond and increase in height, which I ultimately realised was because the border is part of the box-model for each element on the page. Therefore, in order to solve this problem I applied a default border to each input with the aplha channel set to 0. This was then toggled to 1 on hover, rendering it fully visible without causing any external content movement.
 
 ```js
 let values = {}
