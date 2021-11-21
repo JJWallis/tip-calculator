@@ -58,7 +58,11 @@ Your users should be able to:
 }
 ```
 
-Bg-img for icons on input vs positioning | positioned error msgs | appearance prop - hide number input dials
+The most challenging aspect of the project's design were the form inputs, particularly regarding the icons present within. My solution was to position those icons over the inputs, but I quickly ran into the problem of not being able to apply `position: relative` to the inputs, as well as the icons loosing their alignment when my border hover state was applied.
+
+To solve this problem, I decided to try adding the icons as background images to the inputs which worked successfully. Not only did they stay centred when the inputs re-adjusted, but positioning them was much easier as well. I did however position the dynamic error messages in order to prevent my top-level wrapper from responding and becoming either too wide or tall.
+
+Additionally, I learned about the `appearance` property in CSS which allows us to modify the default visual appearance of certain input fields. In this particular project, I used the property to experiment with removing the default dial that appears on number inputs to make it more like a traditional text input instead. However, browser support for this property is still quite limited, so one shouldn't rely on it too heavily.
 
 ```css
 .input:hover {
