@@ -89,17 +89,15 @@ function calculate() {
       classList(btnReset, 'add', 'selected')
    }
 }
-```
 
-Obj - store values usr would add as they inputted info (matched keys with type of input so would dynamically add to whatever one usr selected vs individual vars) | converting input to number (validation 1st) | Number.isNaN() vs isFinite()
-
-Great basic maths + logic practice - at result using all obj values if all 3 present (truthy - `Object.Keys()`) - arrow func to calculate + interpolate corresponding values into equation in readable manner (vs using array to store user data)
-
-```js
 form.addEventListener('change', (e) => inputValidate(e.target))
 ```
 
-Input event vs change
+On the contrary to multiple other solutions I viewed for this challenge, I decided to use an object to store the user's input which would each be dynamically added with a key name matching the id of the input. This contrasted to many other solutions that used three individual variables to store the corresponding data, which took up quite a few more lines of code.
+
+The final calculation performed by the function above would only occur if all three keys were present, and based on a change event firing from any of the inputs. Having examined other solutions, a more appropiate event to listen for would have been the input event so the user could receive live updates as they entered data.
+
+Further validation was of course required to verify the input was actually a number, for which I learned to use `Number.isFinite()` over `Number.isNaN()`, since `isNaN()` can sometimes incorrectly compare data types and return an incorrect boolean result.
 
 ### Continued development
 
