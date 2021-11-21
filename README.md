@@ -56,13 +56,15 @@ Your users should be able to:
    left: 10px;
    bottom: 16%;
 }
+```
 
+Bg-img for icons on input vs positioning | positioned error msgs | appearance prop - hide number input dials
+
+```css
 .input:hover {
    border: 2px solid #80ada8;
 }
 ```
-
-Bg-img for icons on input vs positioning | positioned error msgs | appearance prop - hide number input dials
 
 Border on hover - if present before but colour alpha 0 - don't get other content responding on hover | when btn selected - colour fill stays post click (to show active amount)
 
