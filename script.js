@@ -83,9 +83,7 @@ function calculate() {
 
 /////////////// EVENT LISTENERS //////////////////////
 
-form.addEventListener('change', (e) => {
-   inputValidate(e.target)
-})
+form.addEventListener('change', (e) => inputValidate(e.target))
 
 btnsContainer.addEventListener('click', (e) => {
    const target = e.target
