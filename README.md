@@ -58,9 +58,9 @@ Your users should be able to:
 }
 ```
 
-The most challenging aspect of the project's design were the form inputs, particularly regarding the icons present within. My solution was to position those icons over the inputs, but I quickly ran into the problem of not being able to apply `position: relative;` to the inputs, as well as the icons loosing their alignment when my border hover state was applied.
+The most challenging aspect of the project's design were the form inputs, particularly regarding the icons positioned within them. My solution was to position those icons over the inputs, but I quickly ran into the problem of not being able to apply `position: relative;` to the inputs, as well as the icons loosing their alignment when my border hover state was applied.
 
-To solve this problem, I decided to try adding the icons as background images to the inputs which worked successfully. Not only did they stay centred when the inputs re-adjusted, but positioning them was much easier as well. I did however position the dynamic error messages in order to prevent my top-level wrapper from responding and becoming either too wide or tall.
+To solve this problem, I decided to try adding the icons as background images to the inputs which worked successfully. Not only did they stay centred when the inputs re-adjusted, but positioning them was much easier as well. I did however position the dynamic error messages in order to prevent my top-level wrapper from responding and becoming either too wide or tall when appended into the DOM.
 
 Additionally, I learned about the `appearance` property in CSS which allows us to modify the default visual appearance of certain input fields. In this particular project, I used the property to experiment with removing the default dial that appears on number inputs to make it more like a traditional text input instead. However, browser support for this property is still quite limited, so one shouldn't rely on it too heavily.
 
@@ -70,7 +70,7 @@ Additionally, I learned about the `appearance` property in CSS which allows us t
 }
 ```
 
-As explained above, I toggled a border on each input when hovered over to keep in line with the original design. However, when I first implemented this feature it caused all the content around the input to respond and increase in height, which I ultimately realised was because the border is part of the box-model for each element on the page. Therefore, in order to solve this problem I applied a default border to each input with the aplha channel set to 0. This was then toggled to 1 on hover, rendering it fully visible without causing any external content movement.
+As explained above, I toggled a border on each input when hovering over to keep in line with the original design. However, when I first implemented this feature it caused all the content around the input to respond and increase in height, which I ultimately realised was because the border is part of the box-model for each element on the page. Therefore, in order to solve this problem I applied a default border to each input with the aplha channel set to 0. This was then toggled to 1 on hover, rendering it fully visible without causing any external content movement.
 
 ```js
 let values = {}
@@ -93,7 +93,7 @@ function calculate() {
 form.addEventListener('change', (e) => inputValidate(e.target))
 ```
 
-On the contrary to multiple other solutions I viewed for this challenge, I decided to use an object to store the user's input which would each be dynamically added with a key name matching the id of the input. This contrasted to many other solutions that used three individual variables to store the corresponding data, which took up quite a few more lines of code.
+On the contrary to multiple other solutions I viewed for this challenge, I decided to use an object to store the user's input which would dynamically store each value added to it with a key name matching the id of the input. This contrasted to many other solutions that used three individual variables to store the corresponding data, which took up more lines of code.
 
 The final calculation performed by the function above would only occur if all three keys were present, and based on a change event firing from any of the inputs. Having examined other solutions, a more appropiate event to listen for would have been the input event so the user could receive live updates as they entered data.
 
