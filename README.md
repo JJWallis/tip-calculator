@@ -11,7 +11,6 @@ This is a solution to the [Tip calculator app challenge](https://www.frontendmen
 -  [My process](#my-process)
    -  [Built with](#built-with)
    -  [What I learned](#what-i-learned)
-   -  [Continued development](#continued-development)
 -  [Author](#author)
 
 ## Overview
@@ -99,9 +98,7 @@ The final calculation performed by the function above would only occur if all th
 
 Further validation was of course required to verify the input was actually a number, for which I learned to use `Number.isFinite()` over `Number.isNaN()`, since `isNaN()` can sometimes incorrectly compare data types and return an incorrect boolean result.
 
-### Continued development
-
 ## Author
 
 -  Website - [Joshua Jameson-Wallis](https://joshuajamesonwallis.com)
--  Linkedin - [Joshua Jameson-Wallis]()
+-  Linkedin - [Joshua Jameson-Wallis](https://www.linkedin.com/in/joshua-jameson-wallis/)
