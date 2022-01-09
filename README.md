@@ -57,11 +57,11 @@ Your users should be able to:
 }
 ```
 
-The most challenging aspect of the project's design were the form inputs, particularly regarding the icons positioned within them. My solution was to position those icons over the inputs, but I quickly ran into the problem of not being able to apply `position: relative;` to the inputs, as well as the icons loosing their alignment when my border hover state was applied.
+The most challenging aspect of the project's design were the form inputs and the icons positioned within them. My first solution involved absolutely positioning the icons, but I was unable to apply `position: relative;` to the inputs and the icons lost their alignment when my border hover state was applied.
 
-To solve this problem, I added the icons as background images to the inputs which worked successfully since they stay centred when the layout re-adjusted. I did however position the dynamic error messages in order to prevent my top-level wrapper from responding and becoming either too wide or tall.
+I then added the icons as background images to the inputs since they would stay centred when the layout re-adjusted. I did however position the dynamic error messages in order to prevent my top-level wrapper from responding and becoming either too wide or tall when they were dynamically inserted into the DOM.
 
-Additionally, I learned about the `appearance` property in CSS, which allows us to modify the default visual appearance of certain input fields. In this project, I used the property to experiment with removing the default dial that appears on number inputs to make it more like a traditional text input instead.
+Additionally, I learned about the `appearance` property in CSS which allows us to modify the default visual appearance of certain input fields. Here I used the property to remove the default dial that appears on number inputs and make it more like a text field instead.
 
 ```css
 .input:hover {
