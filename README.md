@@ -40,7 +40,7 @@ Your users should be able to:
 -  Mobile-first workflow
 -  CSS Grid
 -  Flexbox
--  Vanilla JS
+-  Javascript
 
 ### What I learned
 
