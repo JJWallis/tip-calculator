@@ -98,7 +98,7 @@ The final calculation performed by the function above would only occur if all th
 
 ### Continued development
 
-I look forward to learning about other ways to validate numbers in Javascript, since the most common method `Number.isNaN()` can sometimes incorrectly compare data types and return an incorrect boolean result.
+I look forward to learning about other ways to validate numbers in Javascript, since the most common method `Number.isNaN()` only attempts to compare a value if the value is of a number type.
 
 ## Author
 
