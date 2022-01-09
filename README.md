@@ -92,9 +92,9 @@ function calculate() {
 form.addEventListener('change', (e) => inputValidate(e.target))
 ```
 
-On the contrary to multiple other solutions, I decided to use an object to store the user's input which would dynamically store each value added to it with a key name matching the id of the input. This contrasted to other solutions because many used three individual variables to store the corresponding data, which took up more lines of code.
+I decided to use an object to store the user's input which would dynamically store each value added to it with a key name matching the id of the input. This contrasts to my previous method of using three separate variables instead, ultimtately taking up unnecessary lines of code.
 
-The final calculation performed by the function above would only occur if all three keys were present, and based on a `change` event firing from any of the inputs. Having examined other solutions, a more appropiate event to listen for would have been the `input` event, so the user could receive live updated results as they entered new data.
+The final calculation performed by the function above would only occur if all three keys were present, and based on a `change` event firing from any desired input. I'm aware that the `input` event would have been another appropriate event to listen for, since the user could receive live updated results as they entered new data.
 
 ### Continued development
 
