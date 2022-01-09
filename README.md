@@ -69,7 +69,7 @@ Additionally, I learned about the `appearance` property in CSS which allows us t
 }
 ```
 
-As explained above, I toggled a border on each input when hovering over to keep in line with the original design. However, when I first implemented this feature it caused all the content around the input to respond from its increased height, which I ultimately realised was because the border is part of the box-model for each element on the page. Therefore, in order to solve this problem I applied a default border to each input with the aplha channel set to 0. This was then toggled to 1 on hover, rendering it fully visible without causing any external content movement.
+I applied a border while hovering over each input to keep in line with the original design, however doing so caused all other content around the input to respond from its increased height. To solve this problem I applied a default border to each input with the aplha channel set to 0 which was then toggled to 1 on hover, rendering it fully visible without causing any external content re-adjustment.
 
 ```js
 let values = {}
