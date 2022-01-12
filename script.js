@@ -76,7 +76,7 @@ function calculate() {
       const totalPerPerson = () =>
          values['input-bill'] / values['input-ppl'] + tip
       element(tipTotal, 'innerText', `$${tip}`)
-      element(total, 'innerText', `$${totalPerPerson()}`)
+      element(total, 'innerText', `$${Math.floor(totalPerPerson())}`)
       classList(btnReset, 'add', 'selected')
    }
 }
